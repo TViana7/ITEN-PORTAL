@@ -1,0 +1,65 @@
+<h2 class="ui center aligned header">Utilizadores</h2>
+<div class="ui container">
+<form class="ui form">
+  <h4 class="ui dividing header"><i class="search icon"></i>Pesquisar Utilizador</h4>
+  <div class="field">
+    <label>Utilizador</label>
+    <div class="three fields">
+      <div class="field">
+        <input type="text" name="shipping[first-name]" placeholder="email">
+      </div>
+      <div class="field">  
+        <select class="ui fluid dropdown">
+        <option value="">Cliente</option>
+        <option value="C">Cliente1</option>
+        <option value="P">Cliente2</option>
+        </select>
+      </div>
+      <div class="field">  
+        <select class="ui fluid dropdown">
+        <option value="">Perfil</option>
+        <option value="C">Admin</option>
+        <option value="P">ItenStandard</option>
+        </select>
+      </div>
+      
+    </div>
+  </div>
+  <button class="ui right floated button">Pesquisar</button>
+</form>
+
+<h4 class="ui dividing header"><i class="user icon"></i>Utilizadores</h4>
+<table class="ui celled table">
+    <thead>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Cliente</th>
+      <th>Perfil</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <h4 class="ui image header">
+                    <i class="user icon"></i>
+                    <div class="content">
+                        Tiago Viana
+                        <!--<div class="sub header">Human Resources</div>-->          
+                    </div>
+                </h4>
+            </td>
+            <td>
+                tiago.gomes7@me.com
+            </td>
+            <td>
+                Iten Solutions
+            </td>
+             <td>
+                AdminIten, ItenStandard
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  <button (click)="criarUtilizadorRoute()" class="ui right floated button">Adicionar Utilizador</button>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,32 @@
+<div class="ui text container">
+  <form class="ui form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <h4 class="ui dividing header"><i class="add user icon"></i>Adicionar Perfil</h4>
+  <label>Dados Perfil</label>
+  <div class="field">
+    <div class="two fields">
+      <div class="field">
+        <input type="text" name="nome" id="nome" placeholder="Nome do Perfil" ngModel> 
+      </div>
+      <div class="field">
+        <input type="email" name="email" id="email" placeholder="Descrição" ngModel >
+      </div>
+    </div>
+  </div>
+  <label>Mapeamento</label>
+  <div class="ui celled relaxed list"  *ngFor="let i of arrayInfo">
+    <label>{{i.Descricao}}</label>
+    <script>console.log(item)</script>
+      <div class="item">
+          <div class="list">
+            <div class="item"*ngFor="let inf of i.infos">
+              <div class="ui child checkbox">
+                <input type="checkbox" name="{{inf.idurl}}" value="{{inf.idurl}}" ngModel>
+                <label>{{inf.nome}}</label>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+<button class="ui right floated button" type="submit">Adicionar</button>
+</form>
+</div>

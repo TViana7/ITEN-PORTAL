@@ -1,0 +1,81 @@
+
+
+<h2 class="ui center aligned header">Encomendas</h2>
+<div class="ui container">
+<form class="ui form">
+  <h4 class="ui dividing header"><i class="search icon"></i>Pesquisar Encomenda</h4>
+  <div class="field">
+    <label>Encomenda</label>
+    <div class="three fields">
+      <div class="field">
+        <input type="text" name="shipping[first-name]" placeholder="Número de Encomenda">
+      </div>
+      <div class="field">  
+        <select class="ui fluid dropdown">
+        <option value="">Estado</option>
+        <option value="C">Concluido</option>
+        <option value="P">Em Progresso</option>
+        </select>
+      </div>
+      <div class="field">
+        <input type="date" name="shipping[first-name]" placeholder="Número de Encomenda">
+      </div>
+    </div>
+  </div>
+  <button class="ui right floated button">Pesquisar</button>
+</form>
+
+<h4 class="ui dividing header"><i class="archive icon"></i>Encomendas</h4>
+<table class="ui celled table">
+    <thead>
+      <th>Encomenda</th>
+      <th>Descrição</th>
+      <th>Data</th>
+      <th>Estado</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <h4 class="ui image header">
+                    <i class="archive icon"></i>
+                    <div class="content">
+                        12763547
+                        <!--<div class="sub header">Human Resources</div>-->          
+                    </div>
+                </h4>
+            </td>
+            <td>
+                Custumer Portal
+            </td>
+            <td>
+                12/12/2016
+            </td>
+             <td>
+                Em progresso
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4 class="ui image header">
+                    <i class="archive icon"></i>
+                    <div class="content">
+                        11354564
+                        <!--<div class="sub header">Human Resources</div>-->          
+                    </div>
+                </h4>
+            </td>
+            <td>
+                Software Agros
+            </td>
+            <td>
+                12/05/2016
+            </td>
+             <td>
+                Concluída
+            </td>
+            
+        </tr>
+
+    </tbody>
+  </table>
+</div>

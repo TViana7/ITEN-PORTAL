@@ -1,0 +1,56 @@
+<style type="text/css">
+    body {
+      background-color: #F1F1F1;
+
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -50px;
+    }
+    .column {
+      max-width: 450px;
+    }
+
+    p{
+      color: red;
+    }
+  </style>
+
+<body>
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui medium image">
+      <img src="../src/Images/logo_Iten_Assinatura-amarelo_preto.png" class="image">
+    </h2>
+    <h1 class="ui grey header">Portal do Cliente</h1>
+    <form class="ui large form error">
+      <div class="ui basic segment ">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input [(ngModel)]="utilizador.Email" name="email" placeholder="E-mail" type="text">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input [(ngModel)]="utilizador.Password"  name="password" placeholder="Password" type="password">
+          </div>
+        </div>
+        <p *ngIf="[erro]">{{message}}</p>
+        <div class="ui fluid large button" (click)="fazerLogin()">
+          <!--<a class="item">Entrar</a>-->
+          Entrar
+        </div>
+      </div>
+      <div class="ui error message"></div>
+
+    </form>
+
+  </div>
+</div>
+
+
+</body>

@@ -1,0 +1,61 @@
+
+<h3 class="ui center aligned header">Perfis</h3>
+
+<div class="ui text container">
+
+  <h4 class="ui dividing header"><i class="users icon"></i>Perfis</h4>
+
+
+  <table class="ui celled table">
+    <thead>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <h4 class="ui image header">
+                    <i class="user icon"></i>
+                    <div class="content">
+                        AdminIten
+                        <!--<div class="sub header">Human Resources</div>-->          
+                    </div>
+                </h4>
+            </td>
+            <td>
+                Administrador Iten
+            </td>
+             <td>
+                <i class="edit icon"></i>
+                <i class="remove user icon"></i>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <h4 class="ui image header">
+                    <i class="user icon"></i>
+                    <div class="content">
+                        StandIten
+                        <!--<div class="sub header">Human Resources</div>-->          
+                    </div>
+                </h4>
+            </td>
+            <td>
+                Standard Iten
+            </td>
+             <td>
+                <i class="edit icon"></i>
+                <i class="remove user icon"></i>
+            </td>
+
+        </tr>
+
+    </tbody>
+  </table>
+  <button (click)="criarPerfilRoute()"class="ui right floated button">Adicionar Perfil</button>
+</div>
+
+
+<router-outlet></router-outlet>
