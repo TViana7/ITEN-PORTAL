@@ -2,42 +2,34 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from "@angular/http";
 
 @Injectable()
-export class CriarPerfilService {
+export class CriarUtilizadorService {
 
   constructor(private http:Http) { }
 
-
-
-
-   /*
-
-    Metodo que retorna um json com os dados para a checkbox
-
-  */
-  getPerfis() {
+  getClientes() {
     
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
     
-    return this.http.get('http://localhost:3000/ws/mapeamento/getURL/teste', options).map(data => {
+    return this.http.get('http://localhost:3000/ws/cliente', options).map(data => {
             //console.log(data.json());
             return data.json();
     });
   
    }
 
-   insertPerfil(perfil:Object){
-    console.log(perfil);
+   getPerfil() {
+    
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
     
-    return this.http.post('http://localhost:3000/ws/perfis/inserirPerfil/novoPerfil', JSON.stringify(perfil), options)
-            .map((response: Response)=>response.json());
-
-  }
+    return this.http.get('http://localhost:3000/ws/perfil', options).map(data => {
+            //console.log(data.json());
+            return data.json();
+    });
+  
+   }
 
 }
-
-

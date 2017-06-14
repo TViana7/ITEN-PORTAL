@@ -10,51 +10,41 @@
     <thead>
       <th>Nome</th>
       <th>Descrição</th>
+      <th>Mapeamento</th>
       <th></th>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let lista of arrayListagem">
             <td>
                 <h4 class="ui image header">
                     <i class="user icon"></i>
                     <div class="content">
-                        AdminIten
+                        {{lista.NomePerfil}}
                         <!--<div class="sub header">Human Resources</div>-->          
                     </div>
                 </h4>
             </td>
             <td>
-                Administrador Iten
+                {{lista.Descricao}}
             </td>
+            
              <td>
-                <i class="edit icon"></i>
-                <i class="remove user icon"></i>
-            </td>
-
-        </tr>
-        <tr>
-            <td>
-                <h4 class="ui image header">
-                    <i class="user icon"></i>
-                    <div class="content">
-                        StandIten
-                        <!--<div class="sub header">Human Resources</div>-->          
-                    </div>
-                </h4>
+                 <label  *ngFor="let list of lista.MapaUrl">
+                    {{list.Nome}}-
+                 </label>
             </td>
             <td>
-                Standard Iten
+                <i class="edit icon" (click)="edit()"></i>
+                <i class="remove user icon" (click)="delete(lista.IdPerfil)"></i>
             </td>
-             <td>
-                <i class="edit icon"></i>
-                <i class="remove user icon"></i>
-            </td>
+
+
+           
 
         </tr>
-
     </tbody>
   </table>
-  <button (click)="criarPerfilRoute()"class="ui right floated button">Adicionar Perfil</button>
+  <button link (click)="criarPerfilRoute()"class="ui right floated button">Adicionar Perfil</button>
 </div>
 
 

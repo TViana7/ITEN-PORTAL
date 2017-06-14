@@ -35,4 +35,10 @@ export class AuthGuard implements CanActivate{
     return this.nome;
   }
 
+  getCliente():String{
+    var user = JSON.parse(localStorage.getItem("currentUser"));
+    let cliente=user.user.Cliente;
+    return cliente;
+  }
+
 }

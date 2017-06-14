@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CriarPerfilService } from "app/perfis/criar-perfil/criar-perfil.service";
+import { Router } from "@angular/router";
+import { AuthGuard } from "app/guards/auth.guard";
+
+
 
 
 
@@ -11,44 +15,61 @@ import { CriarPerfilService } from "app/perfis/criar-perfil/criar-perfil.service
 export class CriarPerfilComponent implements OnInit {
 
   public arrayInfo=[];
-  //private saveInfo: boolean = true;
-  //public perfilMapa:perfilMapa;
+  public arrayUrl=[];
+  public arrayNomDesc=[];
+ 
 
   
 
-  constructor(private criarPerfilService:CriarPerfilService) { }
+  constructor(private criarPerfilService:CriarPerfilService, private router:Router, private authGuard:AuthGuard ) { }
 
   ngOnInit() {
 
     this.criarPerfilService.getPerfis().subscribe(
 
       response=>{
-          /*for (var index = 0; index < response.length; index++) {
-            //console.log(response[index].Descricao);
-            this.descricoes.push(response[index].Descricao);
-
-            for (var index1 = 0; index1 < response[index].infos.length; index1 ++) {
-              //console.log(response[index].infos[index1].idurl);
-              this.info.push(response[index].infos[index1].idurl, response[index].infos[index1].nome);
-            }
-                
-          }*/
-
           this.arrayInfo=response;
-          //alert(this.descricoes[0].infos[0].idurl);
-          //console.log(this.descricoes);
-          //console.log(this.info);
+          console.log(this.arrayInfo);
       }
-
-      
     );
-    
+
     
   }
 
   onSubmit(form){
-    console.log(form.value);
+    let perfilcliente:boolean=false;
+    console.log("formnovo:"+form.value.PerfilCliente);
+  
+    for (let key of Object.keys(form.value)) {  
+        let idurl = form.value[key];
+        if(idurl==true){
+          //console.log(key);
+          this.arrayUrl.push(key);
+        }
+    }
 
+    let cliente=this.authGuard.getCliente();
+    let novoPerfil = { "nome": form.value.nome,
+                       "descricao": form.value.descricao,
+                       "cliente": cliente,
+                       "url": this.arrayUrl
+                      }
+    
+    this.criarPerfilService.insertPerfil(novoPerfil).subscribe(
+
+      response=>{
+        this.arrayUrl=[];
+        novoPerfil = { "nome": "",
+                       "descricao": "",
+                       "cliente":"",
+                       "url": this.arrayUrl
+                      }
+        console.log(response);
+        this.router.navigate(['/perfis']);
+
+      });
+    //console.log(this.arrayUrl);
+  
   }
 
 }

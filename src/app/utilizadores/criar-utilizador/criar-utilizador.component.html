@@ -1,20 +1,18 @@
 <div class="ui container">
-  <form class="ui form">
+  <form class="ui form" #f="ngForm" (ngSubmit)="onSubmit(f)">
   <h4 class="ui dividing header"><i class="add user icon"></i>Adicionar utilizador</h4>
   <label>Dados utilizador</label>
   <div class="field">
     <div class="three fields">
       <div class="field">
-        <input type="text" name="shipping[first-name]" placeholder="Nome">
+        <input type="text" name="nome" placeholder="Nome" ngModel>
       </div>
       <div class="field">
-        <input type="text" name="shipping[first-name]" placeholder="Email">
+        <input type="text" name="email" placeholder="Email" ngModel>
       </div>
       <div class="field">  
-        <select class="ui fluid dropdown">
-        <option value="">Cliente</option>
-        <option value="C">Cliente1</option>
-        <option value="P">Cliente2</option>
+        <select class="ui fluid dropdown" >
+            <option value="{{cliente.Nome}}" name="{{cliente.Nome}}" ngModel *ngFor="let cliente of arrayClientes">{{cliente.Nome}} </option>
         </select>
       </div>
     </div>
@@ -23,34 +21,16 @@
   <i class="users icon"></i><label>Perfis</label>
   <div class="item">
     <div class="list">
-      <div class="item">
+      <div class="item" *ngFor="let perfis of arrayPerfis">
         <div class="ui child checkbox">
-          <input type="checkbox" name="apple">
-          <label>Administrador Iten</label>
-        </div>
-      </div>
-      <div class="item">
-        <div class="ui child checkbox">
-          <input type="checkbox" name="apple">
-          <label>Standard Iten</label>
-        </div>
-      </div>
-      <div class="item">
-        <div class="ui child checkbox">
-          <input type="checkbox" name="apple">
-          <label>Administrador Cliente</label>
-        </div>
-      </div>
-      <div class="item">
-        <div class="ui child checkbox">
-          <input type="checkbox" name="apple">
-          <label>Standard Cliente</label>
+          <input type="checkbox" name="{{perfis.IdPerfil}} " ngModel>
+          <label>{{perfis.NomePerfil}}</label>
         </div>
       </div>
     </div>
   </div>
 </div>
-<button class="ui right floated button">Adicionar</button>
+<button class="ui right floated button" type="submit">Adicionar</button>
 </form>
 </div>
 
