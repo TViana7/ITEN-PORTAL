@@ -18,18 +18,31 @@ export class CriarUtilizadorService {
     });
   
    }
+   getClientesOutrosUser(id) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    let iduser={"idUser":id};
+    
+    
+    return this.http.post('http://localhost:3000/ws/cliente/outrosUtilizadores', JSON.stringify(iduser), options)
+            .map((response: Response)=>response.json());
 
-   getPerfil() {
+
+   }
+
+   getPerfil(idCliente) {
     
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
+    let id={"idCliente":idCliente}
     
-    return this.http.get('http://localhost:3000/ws/perfil', options).map(data => {
-            //console.log(data.json());
-            return data.json();
-    });
-  
+    return this.http.post('http://localhost:3000/ws/perfis/perfisCliente', JSON.stringify(id), options)
+            .map((response: Response)=>response.json());
+
+
    }
+
 
 }

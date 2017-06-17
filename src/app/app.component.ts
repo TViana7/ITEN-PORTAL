@@ -37,6 +37,7 @@ export class AppComponent {
   logout(){
     //this.login.utilizadorLogout(false);
     this.mostrarMenu=false;
+    localStorage.clear();
     this.router.navigate(['login'])
   }
  
