@@ -5,13 +5,15 @@ import { UtilizadoresComponent } from './utilizadores.component';
 import { CriarUtilizadorComponent } from './criar-utilizador/criar-utilizador.component';
 import { UtilizadoresRoutingModule } from "app/utilizadores/utilizadores.routing.module";
 import { CriarUtilizadorService } from "app/utilizadores/criar-utilizador/criar-utilizador.service";
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
 @NgModule({
   imports: [
     CommonModule,
     UtilizadoresRoutingModule, 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularMultiSelectModule
   ],
   declarations: [UtilizadoresComponent, CriarUtilizadorComponent],
   providers:[CriarUtilizadorService]

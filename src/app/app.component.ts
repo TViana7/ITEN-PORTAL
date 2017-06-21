@@ -20,19 +20,14 @@ export class AppComponent {
   ngOnInit(){
     this.authGuard.mostrarMenu.subscribe(
       mostrar => this.mostrarMenu = mostrar
-      
     );
+    //console.log(this.mostrarMenu);
+    var user=localStorage.getItem('currentUser');
 
-    console.log(this.mostrarMenu);
-
-    //var user=localStorage.getItem('currentUser');
+    console.log(user);
     
   }
 
-  ngOnChanges(changes) {
-    var user = JSON.parse(localStorage.getItem("currentUser"));
-      this.nome=user.user.Nome;
-  }
 
   logout(){
     //this.login.utilizadorLogout(false);

@@ -44,5 +44,16 @@ export class CriarUtilizadorService {
 
    }
 
+   insertUtilizador(utilizador:Object){
+    console.log(utilizador);
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+    
+    return this.http.post('http://localhost:3000/ws/utilizador/inserirUtilizador/novoUtilizador', JSON.stringify(utilizador), options)
+            .map((response: Response)=>response.json());
+
+  }
+
 
 }

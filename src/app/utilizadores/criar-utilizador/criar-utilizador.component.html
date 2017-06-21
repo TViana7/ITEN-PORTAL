@@ -11,8 +11,8 @@
         <input type="text" name="email" placeholder="Email" ngModel>
       </div>
       <div class="field">  
-        <select class="ui fluid dropdown" >
-            <option value="{{cliente.Nome}}" name="{{cliente.Nome}}" ngModel *ngFor="let cliente of arrayClientes">{{cliente.Nome}} </option>
+        <select class="ui fluid dropdown" (change)="onSelect($event.target.value)">
+            <option [value]="cliente.Idcliente" *ngFor="let cliente of arrayClientes" >{{cliente.Nome}} </option>
         </select>
       </div>
     </div>
@@ -23,7 +23,7 @@
     <div class="list">
       <div class="item" *ngFor="let perfis of arrayPerfis">
         <div class="ui child checkbox">
-          <input type="checkbox" name="{{perfis.IdPerfil}} " ngModel>
+          <input type="checkbox" name="{{perfis.IdPerfil}}" ngModel>
           <label>{{perfis.NomePerfil}}</label>
         </div>
       </div>
@@ -33,4 +33,3 @@
 <button class="ui right floated button" type="submit">Adicionar</button>
 </form>
 </div>
-

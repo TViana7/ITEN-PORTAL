@@ -12,8 +12,7 @@ import { AuthGuard } from "app/guards/auth.guard";
 
 
 const appRoutes: Routes=[
-    {path:'encomendas', 
-        loadChildren:'app/encomendas/encomendas.module#EncomendasModule',
+    {path:'encomendas', loadChildren:'app/encomendas/encomendas.module#EncomendasModule',
         canActivate:[AuthGuard]},
     {path:'perfis', loadChildren:'app/perfis/perfis.module#PerfisModule',
         canActivate:[AuthGuard]},
