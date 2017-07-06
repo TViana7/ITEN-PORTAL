@@ -1,11 +1,10 @@
 
 <h3 class="ui center aligned header">Perfis</h3>
 
-<div class="ui text container">
+<div class="ui container">
 
   <h4 class="ui dividing header"><i class="users icon"></i>Perfis</h4>
-
-
+  
   <table class="ui celled table">
     <thead>
       <th>Nome</th>
@@ -19,8 +18,7 @@
                 <h4 class="ui image header">
                     <i class="user icon"></i>
                     <div class="content">
-                        {{lista.NomePerfil}}
-                        <!--<div class="sub header">Human Resources</div>-->          
+                        {{lista.NomePerfil}}     
                     </div>
                 </h4>
             </td>
@@ -29,7 +27,7 @@
             </td>
             
              <td>
-                 <label  *ngFor="let list of lista.MapaUrl">
+                 <label  *ngFor="let list of lista.Url">
                     {{list.Nome}}-
                  </label>
             </td>
@@ -44,8 +42,7 @@
         </tr>
     </tbody>
   </table>
-  <button link (click)="criarPerfilRoute()"class="ui right floated button">Adicionar Perfil</button>
+  <button id="bteste"(click)="criarPerfilRoute()"class="ui right floated button">Adicionar Perfil</button>
 </div>
-
 
 <router-outlet></router-outlet>

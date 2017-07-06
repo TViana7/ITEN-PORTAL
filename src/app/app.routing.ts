@@ -6,6 +6,7 @@ import { HomeComponent } from "app/home/home.component";
 import { LoginComponent } from "app/login/login.component";
 import { EncomendasComponent } from "app/encomendas/encomendas.component";
 
+
 const appRoutes: Routes=[
     {path:'', component: AppComponent},
     {path:'home', component: HomeComponent},

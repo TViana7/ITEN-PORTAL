@@ -6,6 +6,9 @@ import { CriarUtilizadorComponent } from './criar-utilizador/criar-utilizador.co
 import { UtilizadoresRoutingModule } from "app/utilizadores/utilizadores.routing.module";
 import { CriarUtilizadorService } from "app/utilizadores/criar-utilizador/criar-utilizador.service";
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+import { UtilizadoresService } from "app/utilizadores/utilizadores.service";
+
+
 
 @NgModule({
   imports: [
@@ -13,9 +16,10 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2
     UtilizadoresRoutingModule, 
     FormsModule,
     ReactiveFormsModule,
-    AngularMultiSelectModule
+    AngularMultiSelectModule,
+
   ],
   declarations: [UtilizadoresComponent, CriarUtilizadorComponent],
-  providers:[CriarUtilizadorService]
+  providers:[CriarUtilizadorService, UtilizadoresService]
 })
 export class UtilizadoresModule { }

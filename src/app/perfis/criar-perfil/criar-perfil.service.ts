@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from "@angular/http";
+import { AuthGuard } from "app/guards/auth.guard";
 
 @Injectable()
 export class CriarPerfilService {
 
-  constructor(private http:Http) { }
+  constructor(private http:Http, private authGuard:AuthGuard) { }
 
 
 
@@ -18,6 +19,7 @@ export class CriarPerfilService {
     
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', ''+this.authGuard.getTokenUser() );
     let options = new RequestOptions({ headers: headers });
     
     return this.http.get('http://localhost:3000/ws/mapeamento/getURL/teste', options).map(data => {

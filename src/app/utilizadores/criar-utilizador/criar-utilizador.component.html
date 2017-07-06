@@ -1,4 +1,4 @@
-<div class="ui container">
+<div id="criarPerfil" class="ui container">
   <form class="ui form" #f="ngForm" (ngSubmit)="onSubmit(f)">
   <h4 class="ui dividing header"><i class="add user icon"></i>Adicionar utilizador</h4>
   <label>Dados utilizador</label>
@@ -12,7 +12,7 @@
       </div>
       <div class="field">  
         <select class="ui fluid dropdown" (change)="onSelect($event.target.value)">
-            <option [value]="cliente.Idcliente" *ngFor="let cliente of arrayClientes" >{{cliente.Nome}} </option>
+            <option [value]="cliente.Idcliente" *ngFor="let cliente of arrayClientes" >{{cliente.ClienteNome}} </option>
         </select>
       </div>
     </div>

@@ -9,13 +9,14 @@ import { CriarPerfilService } from "app/perfis/criar-perfil/criar-perfil.service
 import { PerfilService } from "app/perfis/perfil.service";
 
 
+
 @NgModule({
   imports: [
     CommonModule,
     PerfisRoutingModule,
     FormsModule,
     ReactiveFormsModule
-  ],
+    ],
   declarations: [PerfisComponent, CriarPerfilComponent, EditarPerfilComponent],
   providers:[CriarPerfilService, PerfilService]
 })

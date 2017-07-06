@@ -11,8 +11,8 @@ import { AuthService } from "app/login/auth.service";
 import { AppRoutingModule } from "app/app.routing.module";
 //import { EncomendasModule } from "app/encomendas/encomendas.module";
 //import { ConfiguracoesModule } from "app/configuracoes/configuracoes.module";
-//import { PerfisModule } from "app/perfis/perfis.module";
-//import { UtilizadoresModule } from "app/utilizadores/utilizadores.module";
+import { PerfisModule } from "app/perfis/perfis.module";
+import { UtilizadoresModule } from "app/utilizadores/utilizadores.module";
 import { AuthGuard } from "app/guards/auth.guard";
 
 
@@ -32,8 +32,8 @@ import { AuthGuard } from "app/guards/auth.guard";
     //EncomendasModule,
     AppRoutingModule, 
     //ConfiguracoesModule,
-    //PerfisModule,
-    //UtilizadoresModule
+    PerfisModule,
+    UtilizadoresModule
     //routing
   ],
   providers: [AuthService, AuthGuard, LoginComponent ],

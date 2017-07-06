@@ -9,9 +9,9 @@ import { CriarUtilizadorComponent } from "app/utilizadores/criar-utilizador/cria
 
 
 const utilizadoresRoutes = [
-    {path: '', component: UtilizadoresComponent, children:[
+    /*{path: '', component: UtilizadoresComponent, children:[
         {path:'criarutilizador', component:CriarUtilizadorComponent},
-    ]}
+    ]}*/
     
 ];
 

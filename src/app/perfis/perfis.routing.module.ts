@@ -7,10 +7,10 @@ import { PerfisComponent } from "app/perfis/perfis.component";
 
 
 const perfisRoutes = [
-    {path: '', component: PerfisComponent, children:[
+    /*{path: '', component: PerfisComponent, children:[
         {path:'criarperfil', component:CriarPerfilComponent},
         {path:':id/editarperfil', component:EditarPerfilComponent },
-    ]}
+    ]}*/
     
 ];
 

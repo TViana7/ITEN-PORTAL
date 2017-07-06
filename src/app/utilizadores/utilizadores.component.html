@@ -37,24 +37,26 @@
       <th>Perfil</th>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let lista of arrayUtilizadores">
             <td>
                 <h4 class="ui image header">
                     <i class="user icon"></i>
                     <div class="content">
-                        Tiago Viana
+                        {{lista.NomeUtilizador}}
                         <!--<div class="sub header">Human Resources</div>-->          
                     </div>
                 </h4>
             </td>
             <td>
-                tiago.gomes7@me.com
+                {{lista.Email}}
             </td>
             <td>
-                Iten Solutions
+                {{lista.Cliente}}
             </td>
              <td>
-                AdminIten, ItenStandard
+                <label  *ngFor="let list of lista.perfis">
+                    {{list.NomePerfil}}-
+                 </label>
             </td>
         </tr>
     </tbody>

@@ -11,6 +11,7 @@ import { AuthGuard } from "app/guards/auth.guard";
 export class AppComponent {
 
   nome:String
+  user:String
   mostrarMenu:boolean=false;
 
   constructor(private authGuard: AuthGuard, private router: Router){
@@ -21,11 +22,10 @@ export class AppComponent {
     this.authGuard.mostrarMenu.subscribe(
       mostrar => this.mostrarMenu = mostrar
     );
-    //console.log(this.mostrarMenu);
-    var user=localStorage.getItem('currentUser');
 
-    console.log(user);
-    
+    this.authGuard.username.subscribe(
+      nome=> this.nome= nome 
+    );  
   }
 
 
@@ -35,5 +35,6 @@ export class AppComponent {
     localStorage.clear();
     this.router.navigate(['login'])
   }
+
  
 }

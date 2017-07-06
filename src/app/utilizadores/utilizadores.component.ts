@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { UtilizadoresService } from "app/utilizadores/utilizadores.service";
 
 @Component({
   selector: 'app-utilizadores',
@@ -7,10 +8,20 @@ import { Router } from "@angular/router";
   styleUrls: ['./utilizadores.component.css']
 })
 export class UtilizadoresComponent implements OnInit {
+  
+  public arrayUtilizadores=[];
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private utilizadoresService:UtilizadoresService) { }
 
   ngOnInit() {
+    this.utilizadoresService.getUtilizadoresTabela().subscribe(
+      response=>{
+        console.log(response);
+          this.arrayUtilizadores=response;
+          console.log(this.arrayUtilizadores);
+      } 
+    );  
+
   }
 
   criarUtilizadorRoute(){

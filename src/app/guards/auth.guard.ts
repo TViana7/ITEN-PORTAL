@@ -6,9 +6,12 @@ import {tokenNotExpired} from "angular2-jwt";
 
 @Injectable()
 export class AuthGuard implements CanActivate{
-  nome: String;
+  
+  nomeUser: String;
 
   mostrarMenu=new EventEmitter<string>();
+  username=new EventEmitter<string>();
+  
 
   constructor(private authService:AuthService, private router:Router) { }
 
@@ -18,8 +21,10 @@ export class AuthGuard implements CanActivate{
     ){
 
       if(localStorage.getItem('currentUser')){
+        
         this.mostrarMenu.emit('currentUser');
-        this.getUser();
+        this.nomeUser=this.getUser();
+        this.username.emit(''+this.nomeUser);
         return true;
       }
       else{
@@ -28,11 +33,12 @@ export class AuthGuard implements CanActivate{
       }
 
   }
+  
 
   getUser():String{
     var user = JSON.parse(localStorage.getItem("currentUser"));
-    this.nome=user.user.Nome;
-    return this.nome;
+    var nome=user.user.Nome;
+    return nome;
   }
 
   getIdUser():String{
@@ -51,6 +57,11 @@ export class AuthGuard implements CanActivate{
     var user = JSON.parse(localStorage.getItem("currentUser"));
     let IdNavCliente=user.user.IdNav;
     return IdNavCliente;
+  }
+  getTokenUser():string{
+    var user = JSON.parse(localStorage.getItem("currentUser"));
+    let tokenUser=user.token;
+    return tokenUser;
   }
 
 }
