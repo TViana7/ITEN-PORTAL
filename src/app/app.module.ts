@@ -14,6 +14,14 @@ import { AppRoutingModule } from "app/app.routing.module";
 import { PerfisModule } from "app/perfis/perfis.module";
 import { UtilizadoresModule } from "app/utilizadores/utilizadores.module";
 import { AuthGuard } from "app/guards/auth.guard";
+import { EditarUserComponent } from './editar-user/editar-user.component';
+import { EditarUserService } from "app/editar-user/editar-user.service";
+import { EditarPasswordComponent } from './editar-password/editar-password.component';
+import { EditarPasswordService } from "app/editar-password/editar-password.service";
+import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
+import { RecuperarPasswordEmailComponent } from './recuperar-password-email/recuperar-password-email.component';
+import { RecuperarPasswordEmailService } from "app/recuperar-password-email/recuperar-password-email.service";
+import { RecuperarPasswordService } from "app/recuperar-password/recuperar-password.service";
 
 
 
@@ -22,7 +30,11 @@ import { AuthGuard } from "app/guards/auth.guard";
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    EditarUserComponent,
+    EditarPasswordComponent,
+    RecuperarPasswordComponent,
+    RecuperarPasswordEmailComponent,
     //EncomendasComponent
   ],
   imports: [
@@ -36,7 +48,7 @@ import { AuthGuard } from "app/guards/auth.guard";
     UtilizadoresModule
     //routing
   ],
-  providers: [AuthService, AuthGuard, LoginComponent ],
+  providers: [AuthService, AuthGuard, LoginComponent, EditarUserComponent, EditarUserService, EditarPasswordComponent, EditarPasswordService, RecuperarPasswordEmailService, RecuperarPasswordEmailComponent, RecuperarPasswordService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

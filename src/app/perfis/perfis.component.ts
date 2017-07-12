@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { PerfilService } from "app/perfis/perfil.service";
 import $ from 'jquery';
+import { AuthGuard } from "app/guards/auth.guard";
 
 
 
@@ -14,25 +15,35 @@ import $ from 'jquery';
 })
 export class PerfisComponent implements OnInit {
  public arrayListagem=[];
+ editar=false;
+ criar=false;
 
 
 
 
 
-  constructor(private router:Router, private perfilService:PerfilService) {
+  constructor(private router:Router, private perfilService:PerfilService, private authGuard:AuthGuard) {
        
 
    }
 
 
   ngOnInit() {
+    var edt="perfis/editarperfil:id";
+    var cr="perfis/criarperfil";
+    this.editar=this.authGuard.getPermissoes(edt);
+    console.log(this.editar);
+    this.criar=this.authGuard.getPermissoes(cr);
+    console.log(this.editar);
 
      this.perfilService.getPerfilTabela().subscribe(
       response=>{
           this.arrayListagem=response;
           console.log(this.arrayListagem);
+
       } 
-    );  
+    );
+
   }
 
 
@@ -43,7 +54,7 @@ export class PerfisComponent implements OnInit {
     //var ele = document.querySelector('#boo');
     //console.log("b",ele);
 
-    this.router.navigate(['/perfis/criarperfil']);
+    this.router.navigate(['perfis/criarperfil']);
      //ele.scrollIntoView({block:"start",behavior:"smooth"});
    
    
@@ -63,6 +74,11 @@ export class PerfisComponent implements OnInit {
     );  
     });
     
+  }
+
+  edit(idPerfil:string, nome:string, descricao:string){
+    console.log(idPerfil);
+    this.router.navigate(['perfis/editarperfil/'+idPerfil+'/'+nome+'/'+descricao]);
   }
 
 

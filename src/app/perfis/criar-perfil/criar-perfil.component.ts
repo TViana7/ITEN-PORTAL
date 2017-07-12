@@ -26,7 +26,7 @@ export class CriarPerfilComponent implements OnInit {
   arrayauxiliar=[]; 
   arrayNovo=[]; 
 
-  constructor(private criarPerfilService:CriarPerfilService, private router:Router, private authGuard:AuthGuard, fb: FormBuilder ) {
+  constructor(private criarPerfilService:CriarPerfilService, private router:Router, private authGuard:AuthGuard ) {
 
 
   }

@@ -32,8 +32,8 @@
                  </label>
             </td>
             <td>
-                <i class="edit icon" (click)="edit()"></i>
-                <i class="remove user icon" (click)="delete(lista.IdPerfil)"></i>
+                <i class="edit icon" (click)="edit(lista.IdPerfil,lista.NomePerfil,lista.Descricao)" *ngIf="editar==true" ></i>
+                <i class="remove user icon" (click)="delete(lista.IdPerfil)" *ngIf="editar==true"></i>
             </td>
 
 
@@ -42,7 +42,7 @@
         </tr>
     </tbody>
   </table>
-  <button id="bteste"(click)="criarPerfilRoute()"class="ui right floated button">Adicionar Perfil</button>
+  <button id="bteste"(click)="criarPerfilRoute()"class="ui right floated button" *ngIf="criar==true" >Adicionar Perfil</button>
 </div>
 
 <router-outlet></router-outlet>

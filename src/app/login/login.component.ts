@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
     }else{
           this.authService.login(this.utilizador).subscribe(
             response =>{
+            console.log(response);
               if(response.sucesso==true){
                 localStorage.setItem('currentUser', JSON.stringify(response));
                 console.log(localStorage.length);

@@ -8,7 +8,7 @@ import { UtilizadoresService } from "app/utilizadores/utilizadores.service";
   styleUrls: ['./utilizadores.component.css']
 })
 export class UtilizadoresComponent implements OnInit {
-  
+  editar=true;
   public arrayUtilizadores=[];
 
   constructor(private router:Router, private utilizadoresService:UtilizadoresService) { }
@@ -27,6 +27,11 @@ export class UtilizadoresComponent implements OnInit {
   criarUtilizadorRoute(){
     this.router.navigate(['/utilizadores/criarutilizador']);
 
+  }
+
+  edit(id, nome, email){
+    console.log(id, nome, email);
+    this.router.navigate(['utilizadores/editarutilizador/'+id]);
   }
 
 }

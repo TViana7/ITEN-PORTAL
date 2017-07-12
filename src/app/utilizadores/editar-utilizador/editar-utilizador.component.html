@@ -1,0 +1,38 @@
+<div id="criarPerfil" class="ui container">
+  <div class="ui form" >
+  <h4 class="ui dividing header"><i class="add user icon"></i>Editar utilizador</h4>
+  <label>Dados utilizador</label>
+  <div class="field">
+    <div class="three fields">
+      <div class="field">
+        <input type="text" name="nome" placeholder="Nome" [(ngModel)]="nome">
+      </div>
+      <div class="field">
+        <input type="text" name="email" placeholder="Email" [(ngModel)]="email">
+      </div>
+      <div class="field">  
+        <!--<select class="ui fluid dropdown" (change)="onSelect($event.target.value)" [(ng-model)]="teste" >
+            <option [ngValue]="cliente.IdCliente" *ngFor="let cliente of arrayClientes">{{cliente.ClienteNome}} </option>
+        </select>-->
+        <select class="ui fluid dropdown" (change)="onSelect($event.target.value)" >
+                <option *ngFor="let cliente of arrayClientes" [value]="cliente.Idcliente" [selected]="clienteSelecionado===cliente.Idcliente">{{ cliente.ClienteNome }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="ui celled relaxed list">
+  <i class="users icon"></i><label>Perfis</label>
+  <div class="item">
+    <div class="list">
+      <div class="item" *ngFor="let perfis of novoArrayPerfis">
+        <div class="ui child checkbox">
+          <input type="checkbox" [(ngModel)]="perfis.selected">
+          <label>{{perfis.NomePerfil}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="ui right floated button" (click)="onSubmit()" type="submit">Adicionar</button>
+  </div>
+</div>

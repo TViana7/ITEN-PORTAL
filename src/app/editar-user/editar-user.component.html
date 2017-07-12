@@ -1,0 +1,17 @@
+<h3 class="ui center aligned header">Editar Perfil de Utilizador</h3>
+<div class="ui text container">
+<div id="criarPerfil" class="ui form">
+  <h4 class="ui dividing header"><i class="edit icon"></i>Editar Perfil</h4>
+  <label>Dados utilizador</label>
+  <div class="field">
+    <div class="two fields">
+      <div class="field">
+        <input type="text" name="nome" placeholder="Nome" [(ngModel)]="nome">
+      </div>
+      <div class="field">
+        <input type="text" name="email" placeholder="Email" [(ngModel)]="email">
+      </div>
+    </div>
+<button class="ui right floated button" (click)="onSubmit()">Editar</button>
+</div>
+</div>

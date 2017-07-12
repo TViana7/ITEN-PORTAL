@@ -13,6 +13,7 @@ export class AppComponent {
   nome:String
   user:String
   mostrarMenu:boolean=false;
+  categorias = [];
 
   constructor(private authGuard: AuthGuard, private router: Router){
 
@@ -25,16 +26,30 @@ export class AppComponent {
 
     this.authGuard.username.subscribe(
       nome=> this.nome= nome 
-    );  
+    );
+    console.log(this.nome);
+
+    this.authGuard.categorias.subscribe(
+      categorias => this.categorias = categorias
+    );
+    console.log("teste");
+    console.log(this.categorias);  
   }
 
 
   logout(){
     //this.login.utilizadorLogout(false);
+    this.categorias=[];
     this.mostrarMenu=false;
     localStorage.clear();
     this.router.navigate(['login'])
   }
+  editarPerfil(){
+    this.router.navigate(['user/editaruser']);
+  }
 
+  alterarPassword(){
+    this.router.navigate(['user/alterarpassword']);
+  }
  
 }

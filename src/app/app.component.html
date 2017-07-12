@@ -26,27 +26,35 @@
         ITEN
       </a>
       <!--<a href="#" class="item">Encomendas</a>-->
-      <div routerLink="/encomendas" class="ui simple dropdown item "> <!-- MENU COM DROP -->
-        Encomendas 
+      <div *ngFor="let item of categorias" >
+        <div routerLink={{item.link}} class="ui simple dropdown item "> <!-- MENU COM DROP -->
+          {{item.cat}} 
+        </div>
       </div>
-      <div class="ui simple dropdown item "> <!-- MENU COM DROP -->
+
+
+
+
+      <!--<div class="ui simple dropdown item "> 
         Serviços <i class="dropdown icon"></i>
         <div class="menu">
           	<a class="item" href="#">Menu1</a>
         </div>
       </div>
-      <div class="ui simple dropdown item "> <!-- MENU COM DROP -->
+      <div class="ui simple dropdown item "> 
         Configurações <i class="dropdown icon"></i>
         <div class="menu">
           	<a class="item" routerLink="/perfis">Perfis</a>
             <a class="item" routerLink="configuracoes/mapasite">Mapa do Site</a>
             <a class="item" routerLink="/utilizadores">Utilizadores</a>
         </div>
-      </div>
+      </div>-->
       <div class="ui simple dropdown item right"> <!-- MENU COM DROP -->
         {{nome}} <i class="user icon"></i>
         <div class="menu">
-          	<a class="item" href="#">Editar Perfil</a>
+          	<a class="item" (click)="editarPerfil()">Editar Perfil</a>
+            <div class="divider"></div>
+            <a class="item" (click)="alterarPassword()">Alterar Password</a>
             <div class="divider"></div>
             <a class="item" (click)="logout()">Logout</a>
         </div>

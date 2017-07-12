@@ -7,6 +7,7 @@ import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
 import { PerfisRoutingModule } from "app/perfis/perfis.routing.module";
 import { CriarPerfilService } from "app/perfis/criar-perfil/criar-perfil.service";
 import { PerfilService } from "app/perfis/perfil.service";
+import { EditarPerfilService } from "app/perfis/editar-perfil/editar-perfil.service";
 
 
 
@@ -18,6 +19,6 @@ import { PerfilService } from "app/perfis/perfil.service";
     ReactiveFormsModule
     ],
   declarations: [PerfisComponent, CriarPerfilComponent, EditarPerfilComponent],
-  providers:[CriarPerfilService, PerfilService]
+  providers:[CriarPerfilService, PerfilService, EditarPerfilService]
 })
 export class PerfisModule { }
