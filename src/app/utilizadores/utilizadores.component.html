@@ -1,35 +1,8 @@
+<script src="/Users/tiago/Desktop/Customer-Portal-Project/src/assets/table.js"></script>
 <h2 class="ui center aligned header">Utilizadores</h2>
 <div class="ui container">
-<form class="ui form">
-  <h4 class="ui dividing header"><i class="search icon"></i>Pesquisar Utilizador</h4>
-  <div class="field">
-    <label>Utilizador</label>
-    <div class="three fields">
-      <div class="field">
-        <input type="text" name="shipping[first-name]" placeholder="email">
-      </div>
-      <div class="field">  
-        <select class="ui fluid dropdown">
-        <option value="">Cliente</option>
-        <option value="C">Cliente1</option>
-        <option value="P">Cliente2</option>
-        </select>
-      </div>
-      <div class="field">  
-        <select class="ui fluid dropdown">
-        <option value="">Perfil</option>
-        <option value="C">Admin</option>
-        <option value="P">ItenStandard</option>
-        </select>
-      </div>
-      
-    </div>
-  </div>
-  <button class="ui right floated button">Pesquisar</button>
-</form>
-
-<h4 class="ui dividing header"><i class="user icon"></i>Utilizadores</h4>
-<table class="ui celled table">
+    <h4 class="ui dividing header"><i class="user icon"></i>Utilizadores</h4>
+    <table id="example" class="ui celled table">
     <thead>
       <th>Nome</th>
       <th>Email</th>
@@ -43,8 +16,7 @@
                 <h4 class="ui image header">
                     <i class="user icon"></i>
                     <div class="content">
-                        {{lista.NomeUtilizador}}
-                        <!--<div class="sub header">Human Resources</div>-->          
+                        {{lista.NomeUtilizador}}        
                     </div>
                 </h4>
             </td>
@@ -60,13 +32,13 @@
                  </label>
             </td>
             <td>
-                <i class="edit icon" (click)="edit(lista.IdUtilizador,lista.NomeUtilizador,lista.Email)" *ngIf="editar==true" ></i>
-                <i class="remove user icon" (click)="delete(lista.IdPerfil)" *ngIf="editar==true"></i>
+                <i class="edit icon" (click)="edit(lista.IdUtilizador,lista.NomeUtilizador,lista.Email)" *ngIf="editaruser==true" ></i>
+                <i class="remove user icon" (click)="delete(lista.IdUtilizador)" *ngIf="editaruser==true"></i>
             </td>
         </tr>
     </tbody>
   </table>
-  <button (click)="criarUtilizadorRoute()" class="ui right floated button">Adicionar Utilizador</button>
+    <button (click)="criarUtilizadorRoute()" class="ui right floated button" *ngIf="criaruser==true">Adicionar Utilizador</button>
 </div>
 
 <router-outlet></router-outlet>

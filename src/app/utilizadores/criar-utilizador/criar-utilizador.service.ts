@@ -36,7 +36,7 @@ export class CriarUtilizadorService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
-    let id={"idCliente":idCliente}
+    let id={"cliente":idCliente}
     
     return this.http.post('http://localhost:3000/ws/perfis/perfisCliente', JSON.stringify(id), options)
             .map((response: Response)=>response.json());

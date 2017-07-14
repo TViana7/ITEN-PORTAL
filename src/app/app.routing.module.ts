@@ -33,13 +33,13 @@ const appRoutes: Routes=[
         canActivate:[AuthGuard]},*/
     {path:'user/editaruser', component:EditarUserComponent, canActivate:[AuthGuard]},
     {path:'user/alterarpassword', component:EditarPasswordComponent, canActivate:[AuthGuard]},
-    {path:'perfis', component:PerfisComponent, canActivate:[AuthGuard]},
+    {path:'perfis', component:PerfisComponent},
     {path:'perfis/criarperfil', component:CriarPerfilComponent, canActivate:[AuthGuard] },
     {path:'perfis/editarperfil/:id/:nome/:descricao', component:EditarPerfilComponent, canActivate:[AuthGuard] },
     {path:'utilizadores', component:UtilizadoresComponent, canActivate:[AuthGuard]},
     {path:'utilizadores/criarutilizador', component:CriarUtilizadorComponent, canActivate:[AuthGuard]},
     {path:'utilizadores/editarutilizador/:id', component:EditarUtilizadorComponent, canActivate:[AuthGuard]},
-    {path:'', component: AppComponent,canActivate:[AuthGuard]},
+    {path:'', component: HomeComponent,canActivate:[AuthGuard]},
     {path:'home', component: HomeComponent,canActivate:[AuthGuard]},
     //{path:'configuracoes', loadChildren:'app/configuracoes/configuracoes.module#ConfiguracoesModule',canActivate:[AuthGuard]},
         

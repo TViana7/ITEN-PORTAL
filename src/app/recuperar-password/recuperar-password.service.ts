@@ -6,7 +6,7 @@ export class RecuperarPasswordService {
 
   constructor(private http:Http) { }
 
-  password(idutilizador:string, password:string){
+  password(idutilizador:string, password){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });

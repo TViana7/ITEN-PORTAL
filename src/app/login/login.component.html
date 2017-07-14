@@ -30,13 +30,13 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input [(ngModel)]="utilizador.Email" name="email" placeholder="E-mail" type="text">
+            <input [(ngModel)]="email" name="email" placeholder="E-mail" type="text" required>
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input [(ngModel)]="utilizador.Password"  name="password" placeholder="Password" type="password">
+            <input [(ngModel)]="password"  name="password" placeholder="Password" type="password">
           </div>
         </div>
         <p *ngIf="[erro]">{{message}}</p>

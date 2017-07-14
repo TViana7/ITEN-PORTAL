@@ -28,18 +28,14 @@ export class AuthService {
 
 
 
-   login(utilizador:user) {
+   login(utilizador) {
 
-    let email=utilizador.Email;
-    let password=utilizador.Password;
-    let authobj = {"email":utilizador.Email, "password":utilizador.Password};
-
-
+    console.log(utilizador);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
     
-    return this.http.post('http://localhost:3000/auth/autenticacao', JSON.stringify(authobj), options)
+    return this.http.post('http://localhost:3000/auth/autenticacao', JSON.stringify(utilizador), options)
             .map((response: Response)=>response.json());
     
   

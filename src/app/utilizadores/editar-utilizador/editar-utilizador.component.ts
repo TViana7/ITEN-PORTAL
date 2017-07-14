@@ -44,9 +44,6 @@ export class EditarUtilizadorComponent implements OnInit {
                   this.novoArrayPerfis.push(aux);
                 }
                 console.log(this.novoArrayPerfis);
-
-
-
                 this.editarUtilizadorService.getInfoEditarUser(this.idutilizador).subscribe(
                   response => {
 
@@ -67,8 +64,6 @@ export class EditarUtilizadorComponent implements OnInit {
 
                     }
                     console.log(this.novoArrayPerfis);
-
-
                   }
                 );
               }
@@ -85,34 +80,42 @@ export class EditarUtilizadorComponent implements OnInit {
             this.arrayClientes = response;
             //console.log(this.arrayClientes);
 
-            this.criarUtilizadorService.getPerfil(this.authGuard.getCliente()).subscribe(
+             this.criarUtilizadorService.getPerfil(this.authGuard.getCliente()).subscribe(
               response => {
                 this.arrayPerfis = response;
-
-
+                for (var index2 = 0; index2 < this.arrayPerfis.length; index2++) {
+                  let aux = { "IdPerfil": this.arrayPerfis[index2].IdPerfil, "NomePerfil": this.arrayPerfis[index2].NomePerfil, selected: false };
+                  this.novoArrayPerfis.push(aux);
+                }
+                //console.log(this.novoArrayPerfis);
                 this.editarUtilizadorService.getInfoEditarUser(this.idutilizador).subscribe(
                   response => {
-                    //console.log(response);
+
                     this.nome = response[0].nome;
                     this.email = response[0].email;
                     this.clienteSelecionado = response[0].cliente;
+                    //console.log(this.novoArrayPerfis);
+                    
 
                     for (var index = 0; index < response.length; index++) {
                       for (var index1 = 0; index1 < response[index].perfis.length; index1++) {
                         let perfil = response[index].perfis[index1].perfil;
+                        console.log(perfil);
                         for (var index2 = 0; index2 < this.novoArrayPerfis.length; index2++) {
+                          console.log(this.novoArrayPerfis[index2].IdPerfil);
                           if (perfil == this.novoArrayPerfis[index2].IdPerfil) {
                             this.novoArrayPerfis[index2].selected = true;
+                            
+                            
                           }
                         }
 
                       }
 
                     }
-                    console.log(this.novoArrayPerfis);
+                    //console.log(this.novoArrayPerfis);
                   }
                 );
-
               }
             );
           }

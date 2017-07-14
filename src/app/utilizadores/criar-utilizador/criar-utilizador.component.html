@@ -1,35 +1,37 @@
 <div id="criarPerfil" class="ui container">
   <form class="ui form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <h4 class="ui dividing header"><i class="add user icon"></i>Adicionar utilizador</h4>
-  <label>Dados utilizador</label>
-  <div class="field">
-    <div class="three fields">
-      <div class="field">
-        <input type="text" name="nome" placeholder="Nome" ngModel>
-      </div>
-      <div class="field">
-        <input type="text" name="email" placeholder="Email" ngModel>
-      </div>
-      <div class="field">  
-        <select class="ui fluid dropdown" (change)="onSelect($event.target.value)">
-            <option [value]="cliente.Idcliente" *ngFor="let cliente of arrayClientes" >{{cliente.ClienteNome}} </option>
+    <h4 class="ui dividing header"><i class="add user icon"></i>Adicionar utilizador</h4>
+    <label>Dados utilizador</label>
+    <div class="field">
+      <div class="three fields">
+        <div class="field">
+          <input type="text" name="nome" placeholder="Nome" ngModel>
+        </div>
+        <div class="field">
+          <input type="text" name="email" placeholder="Email" ngModel>
+        </div>
+        <div class="field">
+          <select class="ui fluid dropdown" (change)="onSelect($event.target.value)">
+            <option [value]="cliente.Idcliente" [selected]="selectedCliente===cliente.Idcliente" *ngFor="let cliente of arrayClientes" >{{cliente.ClienteNome}} </option>
         </select>
-      </div>
-    </div>
-  </div>
-  <div class="ui celled relaxed list">
-  <i class="users icon"></i><label>Perfis</label>
-  <div class="item">
-    <div class="list">
-      <div class="item" *ngFor="let perfis of arrayPerfis">
-        <div class="ui child checkbox">
-          <input type="checkbox" name="{{perfis.IdPerfil}}" ngModel>
-          <label>{{perfis.NomePerfil}}</label>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<button class="ui right floated button" type="submit">Adicionar</button>
-</form>
+    <p *ngIf="camposvazios==true"> Campos Vazios! </p>
+    <div class="ui celled relaxed list">
+      <i class="users icon"></i><label>Perfis</label>
+      <p *ngIf="existemPerfis==false"> Sem perfis Adicionados </p>
+      <div class="item">
+        <div class="list">
+          <div class="item" *ngFor="let perfis of arrayPerfis">
+            <div class="ui child checkbox">
+              <input type="checkbox" name="{{perfis.IdPerfil}}" ngModel>
+              <label>{{perfis.NomePerfil}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button *ngIf="existemPerfis!=false"  class="ui right floated button" type="submit" >Adicionar</button>
+  </form>
 </div>

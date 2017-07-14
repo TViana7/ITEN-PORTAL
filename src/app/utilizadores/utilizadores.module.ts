@@ -9,6 +9,8 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2
 import { UtilizadoresService } from "app/utilizadores/utilizadores.service";
 import { EditarUtilizadorComponent } from './editar-utilizador/editar-utilizador.component';
 import { EditarUtilizadorService } from "app/utilizadores/editar-utilizador/editar-utilizador.service";
+import { DataTableModule } from "angular2-datatable";
+
 
 
 
@@ -19,6 +21,7 @@ import { EditarUtilizadorService } from "app/utilizadores/editar-utilizador/edit
     FormsModule,
     ReactiveFormsModule,
     AngularMultiSelectModule,
+    DataTableModule,
 
   ],
   declarations: [UtilizadoresComponent, CriarUtilizadorComponent, EditarUtilizadorComponent],

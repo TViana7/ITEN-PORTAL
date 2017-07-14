@@ -29,7 +29,7 @@ export class PerfisComponent implements OnInit {
 
 
   ngOnInit() {
-    var edt="perfis/editarperfil:id";
+    var edt="perfis/editarperfil/:id";
     var cr="perfis/criarperfil";
     this.editar=this.authGuard.getPermissoes(edt);
     console.log(this.editar);

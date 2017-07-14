@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { RecuperarPasswordService } from "app/recuperar-password/recuperar-password.service";
+import { Md5 } from 'ts-md5/dist/md5';
+
 
 @Component({
   selector: 'app-recuperar-password',
@@ -24,7 +26,8 @@ export class RecuperarPasswordComponent implements OnInit {
 
   onSubmit(){
     if(this.novaPassword==this.confirmarNovaPassword){
-      this.recuperarPasswordService.password(this.idUserRecebido, this.novaPassword).subscribe(
+      let pwd= Md5.hashStr(this.novaPassword);
+      this.recuperarPasswordService.password(this.idUserRecebido, pwd).subscribe(
                 response=>{
                   console.log(response);
                   this.router.navigate(['login']);

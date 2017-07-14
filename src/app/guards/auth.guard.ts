@@ -90,7 +90,7 @@ export class AuthGuard implements CanActivate{
 
   getPermissoes(url:string):boolean{
     var user = JSON.parse(localStorage.getItem("currentUser"));
-    
+    console.dir(user.url);
     for (var index = 0; index < user.url.length; index++) {
 
       for (var index1 = 0; index1 < user.url[index].url.length; index1++) {
@@ -101,6 +101,7 @@ export class AuthGuard implements CanActivate{
       }
     }
     return false;
+
   }
 
 
