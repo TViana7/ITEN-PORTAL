@@ -51,5 +51,11 @@ export class AppComponent {
   alterarPassword(){
     this.router.navigate(['user/alterarpassword']);
   }
+
+  cleanLocalStorage(){
+    localStorage.clear();
+    location.reload()
+  }
+
  
 }

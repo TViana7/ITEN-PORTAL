@@ -1,5 +1,12 @@
+<style type="text/css">
+ p{
+      color: red;
+    }
+</style>
 <h3 class="ui center aligned header">Editar Perfil de Utilizador</h3>
 <div class="ui text container">
+<div *ngIf="sucesso==true"  class="ui green message">{{mensagem}}</div>
+<div *ngIf="sucesso==false"  class="ui red message">{{mensagem}}</div>  
 <div id="criarPerfil" class="ui form">
   <h4 class="ui dividing header"><i class="edit icon"></i>Editar Perfil</h4>
   <label>Dados utilizador</label>
@@ -11,7 +18,12 @@
       <div class="field">
         <input type="text" name="email" placeholder="Email" [(ngModel)]="email">
       </div>
+      
     </div>
-<button class="ui right floated button" (click)="onSubmit()">Editar</button>
+    <p *ngIf="camposVazios==true" >Campo(s) vazios!</p>
+    <p *ngIf="emailInvalido==true" >Email Inválido!</p>
+<button *ngIf="mostraBotao==true"  class="ui right floated button" (click)="onSubmit()">Editar</button>
 </div>
+
 </div>
+

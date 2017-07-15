@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { PerfilService } from "app/perfis/perfil.service";
 import $ from 'jquery';
 import { AuthGuard } from "app/guards/auth.guard";
+import swal from 'sweetalert2'
 
 
 
@@ -29,7 +30,7 @@ export class PerfisComponent implements OnInit {
 
 
   ngOnInit() {
-    var edt="perfis/editarperfil/:id";
+    var edt="perfis/editarperfil/:id/:nome/:descricao";
     var cr="perfis/criarperfil";
     this.editar=this.authGuard.getPermissoes(edt);
     console.log(this.editar);
@@ -48,6 +49,7 @@ export class PerfisComponent implements OnInit {
 
 
   criarPerfilRoute(){
+  swal('Any fool can use a computer')
     var el = document.getElementById('bteste');
     console.log("b",el);
     //el.addEventListener("click",function() {console.log("cliquei")});

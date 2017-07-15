@@ -7,7 +7,7 @@ export class EditarPasswordService {
 
   constructor(private http:Http) { }
 
-   updatePassword(iduser:string, passwordatual:string, passwordnova:string){
+   updatePassword(iduser:string, passwordatual, passwordnova){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });

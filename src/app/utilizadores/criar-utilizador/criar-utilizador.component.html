@@ -1,4 +1,11 @@
+<style type="text/css">
+ p{
+      color: red;
+    }
+</style>
 <div id="criarPerfil" class="ui container">
+  <div *ngIf="sucesso==true"  class="ui green message">{{mensagem}}</div>
+  <div *ngIf="sucesso==false"  class="ui red message">{{mensagem}}</div>
   <form class="ui form" #f="ngForm" (ngSubmit)="onSubmit(f)">
     <h4 class="ui dividing header"><i class="add user icon"></i>Adicionar utilizador</h4>
     <label>Dados utilizador</label>
@@ -17,10 +24,11 @@
         </div>
       </div>
     </div>
-    <p *ngIf="camposvazios==true"> Campos Vazios! </p>
+    <p *ngIf="camposvazios==true"> *Campo(s) Vazios! </p>
+    <p *ngIf="emailInvalido==true"> *Email Inválido! </p>
     <div class="ui celled relaxed list">
       <i class="users icon"></i><label>Perfis</label>
-      <p *ngIf="existemPerfis==false"> Sem perfis Adicionados </p>
+      <p *ngIf="existemPerfis==false"> *Sem perfis Adicionados!</p>
       <div class="item">
         <div class="list">
           <div class="item" *ngFor="let perfis of arrayPerfis">
@@ -32,6 +40,8 @@
         </div>
       </div>
     </div>
-    <button *ngIf="existemPerfis!=false"  class="ui right floated button" type="submit" >Adicionar</button>
+    <p *ngIf="perfisVazios==true">*Tem de atribuir pelo menos um perfil ao utilizador!</p>
+    <button *ngIf="botaoAdiconar==true" [disabled]="existemPerfis==false" class="ui right floated button" type="submit" >Adicionar</button>
+    <button *ngIf="botaoVoltar==true"  class="ui right floated button" (click)="voltar()" type="submit">Voltar</button>
   </form>
 </div>

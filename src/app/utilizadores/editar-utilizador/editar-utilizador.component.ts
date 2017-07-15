@@ -10,6 +10,12 @@ import { EditarUtilizadorService } from "app/utilizadores/editar-utilizador/edit
   styleUrls: ['./editar-utilizador.component.css']
 })
 export class EditarUtilizadorComponent implements OnInit {
+  botaoVoltar=false;
+  sucesso=false;
+  mensagem='';
+  botaoAtivo=true;
+  disable=false;
+  erroPerfis=false;
   nome;
   email;
   idutilizador;
@@ -20,12 +26,22 @@ export class EditarUtilizadorComponent implements OnInit {
   clienteSelecionado;
   novoArrayPerfis = [];
 
-  constructor(private activatedRoute: ActivatedRoute, private authGuard: AuthGuard, private criarUtilizadorService: CriarUtilizadorService, private editarUtilizadorService: EditarUtilizadorService) { }
+  constructor(private activatedRoute: ActivatedRoute, private authGuard: AuthGuard, private criarUtilizadorService: CriarUtilizadorService, private editarUtilizadorService: EditarUtilizadorService, private router:Router) { }
 
 
   ngOnInit() {
+
+
+
+
     this.activatedRoute.params.subscribe((params: Params) => {
       this.idutilizador = params['id'];
+
+      if(this.idutilizador=="DDCAB619-5AE8-4CFA-9AF2-8FC6149DE9F4"||this.idutilizador==this.authGuard.getIdUser()){
+        this.botaoAtivo=false;
+        this.disable=true;
+      }
+
       let navIten = "1";
       //console.log(this.authGuard.getIdNavCliente());
 
@@ -134,6 +150,10 @@ export class EditarUtilizadorComponent implements OnInit {
     this.clienteSelecionado = value;
   }
 
+  voltar(){
+    this.router.navigate(['/utilizadores']);
+  }
+
   onSubmit() {
 
     var arrayPerfisTrue = [];
@@ -144,13 +164,25 @@ export class EditarUtilizadorComponent implements OnInit {
     }
 
     let item = { "id": this.idutilizador, "Nome": this.nome, "Email": this.email, "Cliente": this.clienteSelecionado, "perfis": arrayPerfisTrue };
-
+    console.log(arrayPerfisTrue);
+    if(arrayPerfisTrue.length!=0){
     this.editarUtilizadorService.updateUtilizador(item).subscribe(
 
       response => {
         console.log(response);
+        if(response.sucesso==true){
+          this.sucesso=true;
+          this.mensagem=response.message;
+          this.botaoAtivo=false;
+          this.botaoVoltar=true;
+        }
+
 
       });
+    }else{
+      console.log("passa");
+      this.erroPerfis=true;
+    }
 
   }
 

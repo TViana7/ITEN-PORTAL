@@ -4,7 +4,7 @@ import { UtilizadoresService } from "app/utilizadores/utilizadores.service";
 import { DataTableModule } from "angular2-datatable";
 import { ViewContainerRef } from '@angular/core';
 import { AuthGuard } from "app/guards/auth.guard";
-import { MdSnackBar } from '@angular/material';
+
 
 
 
@@ -19,13 +19,10 @@ export class UtilizadoresComponent implements OnInit {
   editaruser=false;
   criaruser=false;
 
-  constructor(private router: Router, private utilizadoresService: UtilizadoresService, private authGuard: AuthGuard, private snackBar:MdSnackBar) { }
+  constructor(private router: Router, private utilizadoresService: UtilizadoresService, private authGuard: AuthGuard) { }
 
   ngOnInit() {
 
-    this.snackBar.open("Autenticação invalida", "Fechar", {
-        duration: 5000,
-      });
     
     
     var edi="utilizadores/editarutilizador/:id";
@@ -48,6 +45,7 @@ export class UtilizadoresComponent implements OnInit {
   }
 
   criarUtilizadorRoute() {
+    window.alert("teste");
     this.router.navigate(['/utilizadores/criarutilizador']);
     
 
@@ -76,7 +74,6 @@ export class UtilizadoresComponent implements OnInit {
                 console.log(response);
                 this.arrayUtilizadores = response;
                 console.log(this.arrayUtilizadores);
-                return window.confirm('Do you really want to cancel?');
               }
             );
           }

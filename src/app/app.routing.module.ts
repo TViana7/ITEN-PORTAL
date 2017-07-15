@@ -18,34 +18,41 @@ import { EditarPasswordComponent } from "app/editar-password/editar-password.com
 import { RecuperarPasswordComponent } from "app/recuperar-password/recuperar-password.component";
 import { RecuperarPasswordEmailComponent } from "app/recuperar-password-email/recuperar-password-email.component";
 import { EditarUtilizadorComponent } from "app/utilizadores/editar-utilizador/editar-utilizador.component";
+import { EncomendasGuard } from "app/guards/encomendas.guard";
+import { PerfisGuard } from "app/guards/perfis.guard";
+import { PerfisCriarGuard } from "app/guards/PerfisCriar.guard";
+import { PerfisEditarGuard } from "app/guards/PerfisEditar.guard";
+import { UtilizadoresGuard } from "app/guards/Utilizadores.guard";
+import { UtilizadoresCriarGuard } from "app/guards/UtilizadoresCriar.guard";
+import { UtilizadoresEditarGuard } from "app/guards/UtilizadoresEditar.guard";
 //import { EncomendasComponent } from "app/encomendas/encomendas.component";
 //import { EncomendaDatalheComponent } from "app/encomendas/encomenda-datalhe/encomenda-datalhe.component";
+
+
 
 
 const appRoutes: Routes=[
 
     {path:'encomendas', loadChildren:'app/encomendas/encomendas.module#EncomendasModule',
-        canActivate:[AuthGuard]},
+        canActivate:[AuthGuard, EncomendasGuard]},
     {path:'utilizador/novapasswordEmail', component:RecuperarPasswordEmailComponent},
     {path:'utilizador/novapassword/:id', component:RecuperarPasswordComponent},
-    
-    /*{path:'perfis', loadChildren:'app/perfis/perfis.module#PerfisModule',
-        canActivate:[AuthGuard]},*/
     {path:'user/editaruser', component:EditarUserComponent, canActivate:[AuthGuard]},
     {path:'user/alterarpassword', component:EditarPasswordComponent, canActivate:[AuthGuard]},
-    {path:'perfis', component:PerfisComponent},
-    {path:'perfis/criarperfil', component:CriarPerfilComponent, canActivate:[AuthGuard] },
-    {path:'perfis/editarperfil/:id/:nome/:descricao', component:EditarPerfilComponent, canActivate:[AuthGuard] },
-    {path:'utilizadores', component:UtilizadoresComponent, canActivate:[AuthGuard]},
-    {path:'utilizadores/criarutilizador', component:CriarUtilizadorComponent, canActivate:[AuthGuard]},
-    {path:'utilizadores/editarutilizador/:id', component:EditarUtilizadorComponent, canActivate:[AuthGuard]},
+    {path:'perfis', component:PerfisComponent, canActivate:[AuthGuard, PerfisGuard]},
+    {path:'perfis/criarperfil', component:CriarPerfilComponent, canActivate:[AuthGuard, PerfisCriarGuard]},
+    {path:'perfis/editarperfil/:id/:nome/:descricao', component:EditarPerfilComponent, canActivate:[AuthGuard, PerfisEditarGuard] },
+    {path:'utilizadores', component:UtilizadoresComponent, canActivate:[AuthGuard, UtilizadoresGuard]},
+    {path:'utilizadores/criarutilizador', component:CriarUtilizadorComponent, canActivate:[AuthGuard, UtilizadoresCriarGuard]},
+    {path:'utilizadores/editarutilizador/:id', component:EditarUtilizadorComponent, canActivate:[AuthGuard, UtilizadoresEditarGuard]},
     {path:'', component: HomeComponent,canActivate:[AuthGuard]},
     {path:'home', component: HomeComponent,canActivate:[AuthGuard]},
+    {path:'login', component: LoginComponent}
     //{path:'configuracoes', loadChildren:'app/configuracoes/configuracoes.module#ConfiguracoesModule',canActivate:[AuthGuard]},
         
     //{path:'encomendas', component: EncomendasComponent},
     //{path:'encomendasDetalhe', component: EncomendaDatalheComponent},
-    {path:'login', component: LoginComponent}
+    
 ];
 
 @NgModule({
@@ -55,6 +62,8 @@ const appRoutes: Routes=[
 
 })
 export class AppRoutingModule{
+
+
     
 
 }

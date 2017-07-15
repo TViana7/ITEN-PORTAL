@@ -22,6 +22,15 @@ import { RecuperarPasswordComponent } from './recuperar-password/recuperar-passw
 import { RecuperarPasswordEmailComponent } from './recuperar-password-email/recuperar-password-email.component';
 import { RecuperarPasswordEmailService } from "app/recuperar-password-email/recuperar-password-email.service";
 import { RecuperarPasswordService } from "app/recuperar-password/recuperar-password.service";
+import { EncomendasGuard } from "app/guards/encomendas.guard";
+import { PerfisGuard } from "app/guards/perfis.guard";
+import { PerfisCriarGuard } from "app/guards/PerfisCriar.guard";
+import { PerfisEditarGuard } from "app/guards/PerfisEditar.guard";
+import { UtilizadoresGuard } from "app/guards/Utilizadores.guard";
+import { UtilizadoresCriarGuard } from "app/guards/UtilizadoresCriar.guard";
+import { UtilizadoresEditarGuard } from "app/guards/UtilizadoresEditar.guard";
+
+
 
 
 
@@ -51,7 +60,7 @@ import { RecuperarPasswordService } from "app/recuperar-password/recuperar-passw
     UtilizadoresModule
     //routing
   ],
-  providers: [AuthService, AuthGuard, LoginComponent, EditarUserComponent, EditarUserService, EditarPasswordComponent, EditarPasswordService, RecuperarPasswordEmailService, RecuperarPasswordEmailComponent, RecuperarPasswordService ],
+  providers: [AuthService, AuthGuard,EncomendasGuard, PerfisGuard,PerfisCriarGuard,PerfisEditarGuard,UtilizadoresGuard, UtilizadoresCriarGuard, UtilizadoresEditarGuard, LoginComponent, EditarUserComponent, EditarUserService, EditarPasswordComponent, EditarPasswordService, RecuperarPasswordEmailService, RecuperarPasswordEmailComponent, RecuperarPasswordService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
