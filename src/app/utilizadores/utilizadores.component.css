@@ -1,6 +1,7 @@
-.ui.center.aligned.header{
+
+.ui.container{
     margin-top: 100px;
-} 
+}
 
 .ui.dividing.header{
     margin-top: 50px;

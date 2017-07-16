@@ -1,7 +1,9 @@
 
-<h3 class="ui center aligned header">Perfis</h3>
+
 
 <div class="ui container">
+    <div *ngIf="sucesso==true"  class="ui green message">{{mensagem}}</div>
+    <div *ngIf="sucesso==false"  class="ui red message">{{mensagem}}</div>
 
   <h4 class="ui dividing header"><i class="users icon"></i>Perfis</h4>
   

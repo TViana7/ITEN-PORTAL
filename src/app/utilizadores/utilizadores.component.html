@@ -1,6 +1,8 @@
 <script src="/Users/tiago/Desktop/Customer-Portal-Project/src/assets/table.js"></script>
-<h2 class="ui center aligned header">Utilizadores</h2>
+
 <div class="ui container">
+    <div *ngIf="sucesso==true"  class="ui green message">{{mensagem}}</div>
+    <div *ngIf="sucesso==false"  class="ui red message">{{mensagem}}</div>
     <h4 class="ui dividing header"><i class="user icon"></i>Utilizadores</h4>
     <table id="example" class="ui celled table">
     <thead>

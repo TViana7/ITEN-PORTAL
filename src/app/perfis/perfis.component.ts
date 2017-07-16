@@ -18,6 +18,8 @@ export class PerfisComponent implements OnInit {
  public arrayListagem=[];
  editar=false;
  criar=false;
+ sucesso;
+ mensagem;
 
 
 
@@ -49,12 +51,7 @@ export class PerfisComponent implements OnInit {
 
 
   criarPerfilRoute(){
-  swal('Any fool can use a computer')
-    var el = document.getElementById('bteste');
-    console.log("b",el);
-    //el.addEventListener("click",function() {console.log("cliquei")});
-    //var ele = document.querySelector('#boo');
-    //console.log("b",ele);
+  
 
     this.router.navigate(['perfis/criarperfil']);
      //ele.scrollIntoView({block:"start",behavior:"smooth"});
@@ -68,12 +65,15 @@ export class PerfisComponent implements OnInit {
   delete(idPerfil:string){
     this.perfilService.deletePerfil(idPerfil).subscribe(response=>{
       console.log(response);
-      this.perfilService.getPerfilTabela().subscribe(
-      response=>{
-          this.arrayListagem=response;
-          console.log(this.arrayListagem);
-      } 
-    );  
+      if(response.sucesso==true){
+        this.sucesso=response.sucesso;
+        this.mensagem=response.message;
+        location.reload();
+      }else{
+        this.sucesso=response.sucesso;
+        this.mensagem=response.message;
+      }
+       
     });
     
   }

@@ -8,23 +8,48 @@ import { Router } from "@angular/router";
   styleUrls: ['./recuperar-password-email.component.css']
 })
 export class RecuperarPasswordEmailComponent implements OnInit {
-  email='';
-  constructor(private recuperarPasswordEmailService:RecuperarPasswordEmailService, private router:Router) { }
+  email = '';
+  erro=false;
+  mensagem;
+  botaoLogin=false;
+  sucesso=false;
+  input=true;
+  botaoEnviar=true;
+  constructor(private recuperarPasswordEmailService: RecuperarPasswordEmailService, private router: Router) { }
 
   ngOnInit() {
-
+ 
   }
 
-  onSubmit(){
-    if(this.email==''){
-      console.log("vazio");
-    }else{
-            this.recuperarPasswordEmailService.email(this.email).subscribe(
-                response=>{
-                  console.log(response);
-                  this.router.navigate(['login']);      
-            });
+  login(){
+    this.router.navigate(["login"]);
+  }
+
+  onSubmit() {
+    if (this.email != '') {
+      if ((this.email.includes("@"))) {
+        this.recuperarPasswordEmailService.email(this.email).subscribe(
+          response => {
+
+            
+          
+
+          });
+          this.erro=false;
+            this.botaoLogin=true;
+            this.sucesso=true;
+            this.input=false;
+            this.botaoEnviar=false;
+      } else {
+        this.erro = true;
+        this.mensagem = "*Email inválido!";
+      }
+    } else {
+         console.log("teste");
+      this.erro = true;
+      this.mensagem = "*Campo vazio!";
     }
   }
+
 
 }

@@ -16,20 +16,22 @@ import { AuthGuard } from "app/guards/auth.guard";
 export class UtilizadoresComponent implements OnInit {
   editar = true;
   public arrayUtilizadores = [];
-  editaruser=false;
-  criaruser=false;
+  editaruser = false;
+  criaruser = false;
+  sucesso;
+  mensagem;
 
   constructor(private router: Router, private utilizadoresService: UtilizadoresService, private authGuard: AuthGuard) { }
 
   ngOnInit() {
 
-    
-    
-    var edi="utilizadores/editarutilizador/:id";
-    var cr="utilizadores/criarutilizador";
 
-    this.editaruser=this.authGuard.getPermissoes(edi);
-    this.criaruser=this.authGuard.getPermissoes(cr);
+
+    var edi = "utilizadores/editarutilizador/:id";
+    var cr = "utilizadores/criarutilizador";
+
+    this.editaruser = this.authGuard.getPermissoes(edi);
+    this.criaruser = this.authGuard.getPermissoes(cr);
 
 
     console.log(this.editaruser);
@@ -45,16 +47,15 @@ export class UtilizadoresComponent implements OnInit {
   }
 
   criarUtilizadorRoute() {
-    window.alert("teste");
     this.router.navigate(['/utilizadores/criarutilizador']);
-    
+
 
   }
 
   edit(id, nome, email) {
     console.log(id, nome, email);
     this.router.navigate(['utilizadores/editarutilizador/' + id]);
-    
+
   }
   edit1(id) {
     console.log(id);
@@ -62,25 +63,22 @@ export class UtilizadoresComponent implements OnInit {
   }
 
   delete(id) {
-    //console.log("auth"+this.authGuard.getIdUser)
-    
-    if (id != "DDCAB619-5AE8-4CFA-9AF2-8FC6149DE9F4") {
-      if (id != this.authGuard.getIdUser()) {
-        this.utilizadoresService.deleteUtilizadores(id).subscribe(
-          response => {
-            console.log(response);
-            this.utilizadoresService.getUtilizadoresTabela().subscribe(
-              response => {
-                console.log(response);
-                this.arrayUtilizadores = response;
-                console.log(this.arrayUtilizadores);
-              }
-            );
-          }
-        );
+    console.log(id);
 
-      }
+    if (id != "DDCAB619-5AE8-4CFA-9AF2-8FC6149DE9F4" && id != this.authGuard.getIdUser()) {
+      this.utilizadoresService.deleteUtilizadores(id).subscribe(
+        response => {
+          console.log(response);
+          this.sucesso = true;
+          this.mensagem=response.message;
+          location.reload();
+        }
+      );
+    } else {
+      this.sucesso = false;
+      this.mensagem = "Não é possível remover este utilizador!";
     }
+
 
   }
 }

@@ -1,4 +1,12 @@
+
+<style type="text/css">
+ p{
+      color: red;
+    }
+</style>
 <div class="ui text container">
+  <div *ngIf="sucesso==true"  class="ui green message">{{mensagem}}</div>
+  <div *ngIf="sucesso==false"  class="ui red message">{{mensagem}}</div>
   <div class="ui form">
   <h4 class="ui dividing header"><i class="add user icon"></i>Editar Perfil</h4>
   <label>Dados Perfil</label>
@@ -12,6 +20,7 @@
       </div>
     </div>
   </div>
+  <p *ngIf="sucesso1==false">{{mensagem1}}</p>
   <div class="ui celled relaxed list"  *ngFor="let i of arrayNovo">
     <label>{{i.descricao}}</label>
       <div class="item">
@@ -25,6 +34,8 @@
           </div>
       </div>
   </div>
-<button class="ui right floated button" (click)="onSubmit()"button>Adicionar</button>
+    <p *ngIf="sucesso2==false">{{mensagem2}}</p>
+<button *ngIf="adicionar==true"  class="ui right floated button" (click)="onSubmit()"button>Adicionar</button>
+<button *ngIf="voltar==true"  class="ui right floated button" (click)="voltarBotao()"button>Voltar</button>
 </div>
 </div>
