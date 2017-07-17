@@ -27,6 +27,7 @@ export class EditarPerfilComponent implements OnInit {
   mensagem2;
   adicionar = true;
   voltar = false;
+  disable=false;
 
   constructor(private activatedRoute: ActivatedRoute, private criarPerfilService: CriarPerfilService, private editarPerfilService: EditarPerfilService, private authGuard: AuthGuard, private router: Router) { }
 
@@ -36,7 +37,15 @@ export class EditarPerfilComponent implements OnInit {
       this.nome = params['nome'];
       this.descricao = params['descricao'];
 
+      if(this.perfilIdRecebido=="B100A104-B075-42AD-8350-6A2ED8EBC6DB"){
+      this.disable=true;
+    }
+
     });
+
+    if(this.perfilIdRecebido=="B100A104-B075-42AD-8350-6A2ED8EBC6DB"){
+      this.disable=true;
+    }
 
     this.editarPerfilService.getUrlTrue(this.perfilIdRecebido).subscribe(
       response => {

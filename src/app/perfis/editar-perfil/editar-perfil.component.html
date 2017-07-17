@@ -13,10 +13,10 @@
   <div class="field">
     <div class="two fields">
       <div class="field">
-        <input type="text" name="nome" id="nome" placeholder="Nome do Perfil" [(ngModel)]="nome"> 
+        <input type="text" [disabled]="disable" name="nome" id="nome" placeholder="Nome do Perfil" [(ngModel)]="nome"> 
       </div>
       <div class="field">
-        <input type="text" name="descricao" id="email" placeholder="Descrição" [(ngModel)]="descricao" >
+        <input type="text" [disabled]="disable" name="descricao" id="email" placeholder="Descrição" [(ngModel)]="descricao" >
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
           <div class="list">
             <div class="item"*ngFor="let inf of i.infos">
               <div class="ui child checkbox">
-                <input type="checkbox" [(ngModel)]="inf.selected" (change)="checkIfAllSelected(inf);">
+                <input type="checkbox" [disabled]="disable" [(ngModel)]="inf.selected" (change)="checkIfAllSelected(inf);">
                 <label>{{inf.nome}}</label>
               </div>
             </div>
@@ -35,7 +35,7 @@
       </div>
   </div>
     <p *ngIf="sucesso2==false">{{mensagem2}}</p>
-<button *ngIf="adicionar==true"  class="ui right floated button" (click)="onSubmit()"button>Adicionar</button>
+<button *ngIf="adicionar==true" [disabled]="disable" class="ui right floated button" (click)="onSubmit()"button>Adicionar</button>
 <button *ngIf="voltar==true"  class="ui right floated button" (click)="voltarBotao()"button>Voltar</button>
 </div>
 </div>
